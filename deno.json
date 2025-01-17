@@ -1,6 +1,6 @@
 {
   "name": "@melvdouc/dsx",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "license": "MIT",
   "imports": {
     "$/": "./src/",
@@ -13,6 +13,7 @@
   "publish": {
     "include": [
       "./deno.json",
+      "./globals.d.ts",
       "./mod.ts",
       "./README.md",
       "./src"

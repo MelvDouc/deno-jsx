@@ -1,5 +1,4 @@
 import { Window } from "happy-dom";
-import "@melvdouc/dsx";
 
 const window = new Window();
 const { document } = window;

@@ -9,3 +9,13 @@ export const Dsx = {
   createElement,
   Fragment
 } as const;
+
+/**
+ * Define `Dsx` as a global constant.
+ * This is needed by TS transpilers to transpile JSX/TSX code.
+ * @returns The `Dsx` object.
+ */
+export function initDsx(): typeof Dsx {
+  Object.defineProperty(globalThis, "Dsx", { value: Dsx });
+  return Dsx;
+}

@@ -1,9 +1,9 @@
-import { Dsx as _Dsx } from "$/dsx/mod.ts";
 import type { JSX_ElementTagNameMap } from "$/typings/mod.ts";
 
 // Extend the global JSX namespace to include custom intrinsic elements.
 declare global {
   namespace JSX {
+
     // Allows TypeScript to infer the return type of components as `JSX.Element`.
     interface Element extends globalThis.Node { }
 
@@ -18,7 +18,5 @@ declare global {
     };
   }
 
-  const Dsx: typeof _Dsx;
+  const Dsx: typeof import("$/dsx/mod.ts").Dsx;
 }
-
-Object.defineProperty(globalThis, "Dsx", { value: _Dsx });

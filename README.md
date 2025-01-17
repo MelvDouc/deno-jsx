@@ -21,8 +21,9 @@ tsconfig.json:
 Application entry point:
 
 ```tsx
-// Adds the global JSX interface, which is required by code editors to parse JSX code.
-import "@melvdouc/dsx";
+import { initDsx } "@melvdouc/dsx";
+
+initDsx();
 ```
 
 ### Creating a component
