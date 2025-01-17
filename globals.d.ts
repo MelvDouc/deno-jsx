@@ -1,4 +1,4 @@
-import type { JSX_ElementTagNameMap } from "$/typings/mod.ts";
+import type { JSX_ElementTagNameMap } from "@melvdouc/dsx";
 
 // Extend the global JSX namespace to include custom intrinsic elements.
 declare global {
@@ -18,5 +18,5 @@ declare global {
     };
   }
 
-  const Dsx: typeof import("$/dsx/mod.ts").Dsx;
+  const Dsx: typeof import("@melvdouc/dsx").Dsx;
 }

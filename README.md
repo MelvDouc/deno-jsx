@@ -1,7 +1,5 @@
 # Deno JSX
 
-⚠️ This package won't work in Deno as long as JSR doesn't allow global type augmentations.
-
 Generate elements dynamically using JSX.
 
 ## Usage
@@ -17,6 +15,28 @@ tsconfig.json:
     "jsxFactory": "Dsx.createElement",
     "jsxFragmentFactory": "Dsx.Fragment"
   }
+}
+```
+
+As JSR doesn't allow global type augmentations, you need to create a `jsx.d.ts` (or use an existing `.d.ts` file) and insert the following:
+
+```typescript
+import type { JSX_ElementTagNameMap } from "@melvdouc/dsx";
+
+declare global {
+  namespace JSX {
+    interface Element extends globalThis.Node { }
+
+    interface ElementChildrenAttribute {
+      children: unknown;
+    }
+
+    type IntrinsicElements = {
+      [K in keyof JSX_ElementTagNameMap]: Partial<JSX_ElementTagNameMap[K]>
+    };
+  }
+
+  const Dsx: typeof import("@melvdouc/dsx").Dsx;
 }
 ```
 
