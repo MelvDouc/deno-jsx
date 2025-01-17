@@ -1,5 +1,7 @@
 # Deno JSX
 
+⚠️ This package won't work in Deno as long as JSR doesn't allow global type augmentations.
+
 Generate elements dynamically using JSX.
 
 ## Usage
