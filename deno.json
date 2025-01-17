@@ -1,0 +1,35 @@
+{
+  "name": "@melvdouc/dsx",
+  "version": "0.1.0",
+  "license": "MIT",
+  "imports": {
+    "$/": "./src/",
+    "@melvdouc/dsx": "./mod.ts",
+    "@std/assert": "jsr:@std/assert@^1.0.10",
+    "esbuild": "npm:esbuild@^0.24.2",
+    "happy-dom": "npm:happy-dom@^16.5.2"
+  },
+  "exports": "./mod.ts",
+  "publish": {
+    "include": [
+      "./deno.json",
+      "./mod.ts",
+      "./README.md",
+      "./src"
+    ]
+  },
+  "tasks": {
+    "dev": "deno run -A scripts/dev.ts"
+  },
+  "compilerOptions": {
+    "lib": [
+      "deno.window",
+      "DOM"
+    ],
+    "checkJs": false,
+    "verbatimModuleSyntax": true,
+    "jsx": "react",
+    "jsxFactory": "Dsx.createElement",
+    "jsxFragmentFactory": "Dsx.Fragment"
+  }
+}
