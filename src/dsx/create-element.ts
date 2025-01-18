@@ -4,8 +4,7 @@ import type {
   Component,
   ComponentChild,
   ComponentChildren,
-  JSX_Element,
-  Ref
+  JSX_Element
 } from "$/typings/mod.ts";
 
 /**
@@ -35,7 +34,7 @@ export default function createElement(
   applyProps(element, otherProps);
   style && applyStyle(element, style);
   applyChildren(element, children);
-  ($ref as Ref<Element> | undefined)?.set(element);
+  $ref && ($ref.value = element);
   $init && ($init as (element: Element) => void)(element);
 
   return element;

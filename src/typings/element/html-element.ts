@@ -1,7 +1,7 @@
 import type { JSX_AbstractElement } from "$/typings/element/abstract-element.ts";
 import type { JSX_EventHandler } from "$/typings/element/event-handlers.ts";
 
-interface JSX_HTMLElement extends JSX_AbstractElement {
+interface JSX_HTMLElement<T extends HTMLElement = HTMLElement> extends JSX_AbstractElement<T> {
   accessKey: string;
   autocapitalize: "" | "off" | "none" | "on" | "sentences" | "words" | "characters";
   contentEditable: string;
@@ -20,7 +20,7 @@ interface JSX_HTMLElement extends JSX_AbstractElement {
 
 /* FORM */
 
-interface JSX_PopoverInvokerElement extends JSX_HTMLElement {
+interface JSX_PopoverInvokerElement<T extends HTMLElement> extends JSX_HTMLElement<T> {
   disabled: boolean;
   formAction: string;
   formEnctype: string;
@@ -32,12 +32,12 @@ interface JSX_PopoverInvokerElement extends JSX_HTMLElement {
   value: string;
 }
 
-interface JSX_HTMLButtonElement extends JSX_PopoverInvokerElement {
+interface JSX_HTMLButtonElement extends JSX_PopoverInvokerElement<HTMLButtonElement> {
   formTarget: string;
-  type: "submit" | "reset" | "button";
+  type: string;
 }
 
-interface JSX_HTMLFormElement extends JSX_HTMLElement {
+interface JSX_HTMLFormElement extends JSX_HTMLElement<HTMLFormElement> {
   acceptCharset: string;
   action: string;
   autocomplete: AutoFillBase;
@@ -50,12 +50,12 @@ interface JSX_HTMLFormElement extends JSX_HTMLElement {
   target: string;
 }
 
-interface JSX_HTMLFieldSetElement extends JSX_HTMLElement {
+interface JSX_HTMLFieldSetElement extends JSX_HTMLElement<HTMLFieldSetElement> {
   disabled: boolean;
   name: string;
 }
 
-interface JSX_HTMLInputElement extends JSX_PopoverInvokerElement {
+interface JSX_HTMLInputElement extends JSX_PopoverInvokerElement<HTMLInputElement> {
   accept: string;
   align: string;
   alt: string;
@@ -87,11 +87,11 @@ interface JSX_HTMLInputElement extends JSX_PopoverInvokerElement {
   width: number;
 }
 
-interface JSX_HTMLLabelElement extends JSX_HTMLElement {
+interface JSX_HTMLLabelElement extends JSX_HTMLElement<HTMLLabelElement> {
   htmlFor: string;
 }
 
-interface JSX_HTMLMeterElement extends JSX_HTMLElement {
+interface JSX_HTMLMeterElement extends JSX_HTMLElement<HTMLMeterElement> {
   high: number;
   low: number;
   max: number;
@@ -100,12 +100,12 @@ interface JSX_HTMLMeterElement extends JSX_HTMLElement {
   value: number;
 }
 
-interface JSX_HTMLOptGroupElement extends JSX_HTMLElement {
+interface JSX_HTMLOptGroupElement extends JSX_HTMLElement<HTMLOptGroupElement> {
   disabled: boolean;
   label: string;
 }
 
-interface JSX_HTMLOptionElement extends JSX_HTMLElement {
+interface JSX_HTMLOptionElement extends JSX_HTMLElement<HTMLOptionElement> {
   defaultSelected: boolean;
   disabled: boolean;
   label: string;
@@ -113,18 +113,18 @@ interface JSX_HTMLOptionElement extends JSX_HTMLElement {
   value: string;
 }
 
-interface JSX_HTMLOutputElement extends JSX_HTMLElement {
+interface JSX_HTMLOutputElement extends JSX_HTMLElement<HTMLOutputElement> {
   defaultValue: string;
   name: string;
   value: string;
 }
 
-interface JSX_HTMLProgressElement extends JSX_HTMLElement {
+interface JSX_HTMLProgressElement extends JSX_HTMLElement<HTMLProgressElement> {
   max: number;
   value: number;
 }
 
-interface JSX_HTMLSelectElement extends JSX_HTMLElement {
+interface JSX_HTMLSelectElement extends JSX_HTMLElement<HTMLSelectElement> {
   autocomplete: AutoFill;
   disabled: boolean;
   length: number;
@@ -136,7 +136,7 @@ interface JSX_HTMLSelectElement extends JSX_HTMLElement {
   value: string;
 }
 
-interface JSX_HTMLTextAreaElement extends JSX_HTMLElement {
+interface JSX_HTMLTextAreaElement extends JSX_HTMLElement<HTMLTextAreaElement> {
   autocomplete: AutoFill;
   cols: number;
   defaultValue: string;
@@ -158,7 +158,7 @@ interface JSX_HTMLTextAreaElement extends JSX_HTMLElement {
 
 /* Navigation */
 
-interface JSX_NavigationElement extends JSX_HTMLElement {
+interface JSX_NavigationElement<T extends HTMLElement> extends JSX_HTMLElement<T> {
   download: string;
   hash: string;
   hostname: string;
@@ -175,24 +175,24 @@ interface JSX_NavigationElement extends JSX_HTMLElement {
   target: string;
 }
 
-interface JSX_HTMLAnchorElement extends JSX_NavigationElement {
+interface JSX_HTMLAnchorElement extends JSX_NavigationElement<HTMLAnchorElement> {
   hreflang: string;
   type: string;
 }
 
-interface JSX_HTMLAreaElement extends JSX_NavigationElement {
+interface JSX_HTMLAreaElement extends JSX_NavigationElement<HTMLAreaElement> {
   alt: string;
   coords: string;
   shape: "rect" | "circle" | "poly" | "default" | string;
 }
 
-interface JSX_HTMLMapElement extends JSX_HTMLElement {
+interface JSX_HTMLMapElement extends JSX_HTMLElement<HTMLMapElement> {
   name: string;
 }
 
 /* Media */
 
-interface JSX_HTMLMediaElement extends JSX_HTMLElement {
+interface JSX_HTMLMediaElement<T extends HTMLMediaElement> extends JSX_HTMLElement<T> {
   autoplay: boolean;
   controls: boolean;
   crossOrigin: string | null;
@@ -212,16 +212,16 @@ interface JSX_HTMLMediaElement extends JSX_HTMLElement {
   volume: number;
 }
 
-interface JSX_HTMLAudioElement extends JSX_HTMLMediaElement { }
+interface JSX_HTMLAudioElement extends JSX_HTMLMediaElement<HTMLAudioElement> { }
 
-interface JSX_HTMLEmbedElement extends JSX_HTMLElement {
+interface JSX_HTMLEmbedElement extends JSX_HTMLElement<HTMLEmbedElement> {
   height: number;
   src: string;
   type: string;
   width: number;
 }
 
-interface JSX_HTMLSourceElement extends JSX_HTMLElement {
+interface JSX_HTMLSourceElement extends JSX_HTMLElement<HTMLSourceElement> {
   height: number;
   media: string;
   sizes: string;
@@ -231,7 +231,7 @@ interface JSX_HTMLSourceElement extends JSX_HTMLElement {
   width: number;
 }
 
-interface JSX_HTMLTrackElement extends JSX_HTMLElement {
+interface JSX_HTMLTrackElement extends JSX_HTMLElement<HTMLTrackElement> {
   default: boolean;
   kind: string;
   label: string;
@@ -239,7 +239,7 @@ interface JSX_HTMLTrackElement extends JSX_HTMLElement {
   srclang: string;
 }
 
-interface JSX_HTMLVideoElement extends JSX_HTMLMediaElement {
+interface JSX_HTMLVideoElement extends JSX_HTMLMediaElement<HTMLVideoElement> {
   disablePictureInPicture: boolean;
   height: number;
   "on:enterpictureinpicture": JSX_EventHandler<Event>;
@@ -253,12 +253,12 @@ interface JSX_HTMLVideoElement extends JSX_HTMLMediaElement {
 // HEAD
 // ===== ===== ===== ===== =====
 
-interface JSX_HTMLBaseElement extends JSX_HTMLElement {
+interface JSX_HTMLBaseElement extends JSX_HTMLElement<HTMLBaseElement> {
   href: string;
   target: string;
 }
 
-interface JSX_HTMLLinkElement extends JSX_HTMLElement {
+interface JSX_HTMLLinkElement extends JSX_HTMLElement<HTMLLinkElement> {
   as: string;
   blocking: string;
   crossOrigin: string | null;
@@ -273,14 +273,14 @@ interface JSX_HTMLLinkElement extends JSX_HTMLElement {
   type: string;
 }
 
-interface JSX_HTMLMetaElement extends JSX_HTMLElement {
+interface JSX_HTMLMetaElement extends JSX_HTMLElement<HTMLMetaElement> {
   content: string;
   httpEquiv: string;
   media: string;
   name: string;
 }
 
-interface JSX_HTMLScriptElement extends JSX_HTMLElement {
+interface JSX_HTMLScriptElement extends JSX_HTMLElement<HTMLScriptElement> {
   async: boolean;
   crossOrigin: string | null;
   defer: boolean;
@@ -292,7 +292,7 @@ interface JSX_HTMLScriptElement extends JSX_HTMLElement {
   type: string;
 }
 
-interface JSX_HTMLStyleElement extends JSX_HTMLElement {
+interface JSX_HTMLStyleElement extends JSX_HTMLElement<HTMLStyleElement> {
   disabled: boolean;
   media: string;
   title: string;
@@ -302,11 +302,11 @@ interface JSX_HTMLStyleElement extends JSX_HTMLElement {
 // LIST
 // ===== ===== ===== ===== =====
 
-interface JSX_HTMLLiElement extends JSX_HTMLElement {
+interface JSX_HTMLLiElement extends JSX_HTMLElement<HTMLLIElement> {
   value: string;
 }
 
-interface JSX_HTMLOlElement extends JSX_HTMLElement {
+interface JSX_HTMLOlElement extends JSX_HTMLElement<HTMLOListElement> {
   reversed: boolean;
   start: number;
   type: string;
@@ -314,11 +314,11 @@ interface JSX_HTMLOlElement extends JSX_HTMLElement {
 
 /* Table */
 
-interface JSX_HTMLTableElement extends JSX_HTMLElement {
+interface JSX_HTMLTableElement extends JSX_HTMLElement<HTMLTableElement> {
   caption: HTMLTableCaptionElement | null;
 }
 
-interface JSX_HTMLTableCellElement extends JSX_HTMLElement {
+interface JSX_HTMLTableCellElement extends JSX_HTMLElement<HTMLTableCellElement> {
   abbr: string;
   colSpan: number;
   headers: string;
@@ -326,7 +326,7 @@ interface JSX_HTMLTableCellElement extends JSX_HTMLElement {
   scope: string;
 }
 
-interface JSX_HTMLTableColElement extends JSX_HTMLElement {
+interface JSX_HTMLTableColElement extends JSX_HTMLElement<HTMLTableColElement> {
   span: number;
 }
 
@@ -334,25 +334,25 @@ interface JSX_HTMLTableColElement extends JSX_HTMLElement {
 // OTHERS
 // ===== ===== ===== ===== =====
 
-interface JSX_HTMLCanvasElement extends JSX_HTMLElement {
+interface JSX_HTMLCanvasElement extends JSX_HTMLElement<HTMLCanvasElement> {
   height: number;
   width: number;
 }
 
-interface JSX_HTMLDataElement extends JSX_HTMLElement {
+interface JSX_HTMLDataElement extends JSX_HTMLElement<HTMLDataElement> {
   value: string;
 }
 
-interface JSX_HTMLDetailsElement extends JSX_HTMLElement {
+interface JSX_HTMLDetailsElement extends JSX_HTMLElement<HTMLDetailsElement> {
   open: boolean;
 }
 
-interface JSX_HTMLDialogElement extends JSX_HTMLElement {
+interface JSX_HTMLDialogElement extends JSX_HTMLElement<HTMLDialogElement> {
   open: boolean;
   returnValue: string;
 }
 
-interface JSX_HTMLIFrameElement extends JSX_HTMLElement {
+interface JSX_HTMLIFrameElement extends JSX_HTMLElement<HTMLIFrameElement> {
   allow: string;
   allowFullscreen: boolean;
   /**
@@ -369,7 +369,7 @@ interface JSX_HTMLIFrameElement extends JSX_HTMLElement {
   width: string;
 }
 
-interface JSX_HTMLImgElement extends JSX_HTMLElement {
+interface JSX_HTMLImgElement extends JSX_HTMLElement<HTMLImageElement> {
   alt: string;
   crossOrigin: string | null;
   decoding: "async" | "sync" | "auto";
@@ -385,12 +385,12 @@ interface JSX_HTMLImgElement extends JSX_HTMLElement {
   width: number;
 }
 
-interface JSX_HTMLModElement extends JSX_HTMLElement {
+interface JSX_HTMLModElement extends JSX_HTMLElement<HTMLModElement> {
   cite: string;
   dateTime: string;
 }
 
-interface JSX_HTMLObjectElement extends JSX_HTMLElement {
+interface JSX_HTMLObjectElement extends JSX_HTMLElement<HTMLObjectElement> {
   data: string;
   height: string;
   name: string;
@@ -398,15 +398,15 @@ interface JSX_HTMLObjectElement extends JSX_HTMLElement {
   width: string;
 }
 
-interface JSX_HTMLQuoteElement extends JSX_HTMLElement {
+interface JSX_HTMLQuoteElement extends JSX_HTMLElement<HTMLQuoteElement> {
   cite: string;
 }
 
-interface JSX_HTMLSlotElement extends JSX_HTMLElement {
+interface JSX_HTMLSlotElement extends JSX_HTMLElement<HTMLSlotElement> {
   name: string;
 }
 
-interface JSX_HTMLTimeElement extends JSX_HTMLElement {
+interface JSX_HTMLTimeElement extends JSX_HTMLElement<HTMLTimeElement> {
   dateTime: string;
 }
 
@@ -519,7 +519,7 @@ export interface JSX_HTMLElementTagNameMap {
   tr: JSX_HTMLElement;
   track: JSX_HTMLTrackElement;
   u: JSX_HTMLElement;
-  ul: JSX_HTMLElement;
+  ul: JSX_HTMLElement<HTMLUListElement>;
   var: JSX_HTMLElement;
   video: JSX_HTMLVideoElement;
   wbr: JSX_HTMLElement;

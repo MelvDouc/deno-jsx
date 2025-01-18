@@ -16,37 +16,16 @@ class Ref<T> {
   ) { }
 
   /**
-   * Indicates whether this instance refers to an actual element.
+   * Get the value referenced by this instance.
+   * It is null until it is actually set using the `$ref` property on a JSX element.
    */
-  public hasValue(): boolean {
-    return this._value !== null;
-  }
 
-  /**
-   * Get the value this instance has a reference to.
-   * Be mindful that it can be null.
-   */
-  public get(): T | null {
+  public get value(): T | null {
     return this._value;
   }
 
-  /**
-   * Change the value this instance is referring to.
-   * @param value An element, although it can theoretically be a value of any type.
-   * @returns This same instance.
-   */
-  public set(value: T): this {
+  public set value(value: T | null) {
     this._value = value;
-    return this;
-  }
-
-  /**
-   * Unset the value this instance is referring to.
-   * @returns This same instance.
-   */
-  public unset(): this {
-    this._value = null;
-    return this;
   }
 }
 

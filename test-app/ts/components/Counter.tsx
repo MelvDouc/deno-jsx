@@ -9,7 +9,7 @@ export default function Counter({ initialCount = 0, blue }: {
 
   const increment = () => {
     count++;
-    const display = counterRef.get();
+    const display = counterRef.value;
 
     if (display)
       display.innerText = count.toString();
@@ -17,7 +17,7 @@ export default function Counter({ initialCount = 0, blue }: {
 
   return (
     <div className={cls({ Counter: true, blue: !!blue })}>
-      <article data-id="display" $ref={counterRef}>{count}</article>
+      <p data-id="display" $ref={counterRef}>{count}</p>
       <button on:click={increment}>+</button>
     </div>
   );

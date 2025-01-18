@@ -56,11 +56,11 @@ export default function Counter({ initialCount = 0, blue }: {
   blue?: boolean;
 }): JSX.Element {
   let count = initialCount;
-  const counterRef = ref<HTMLParagraphElement>();
+  const counterRef = ref<HTMLElement>();
 
   const increment = (): void => {
     count++;
-    const display = counterRef.get();
+    const display = counterRef.value;
 
     if (display)
       display.innerText = count.toString();
