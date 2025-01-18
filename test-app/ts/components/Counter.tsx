@@ -5,18 +5,19 @@ export default function Counter({ initialCount = 0, blue }: {
   blue?: boolean;
 }) {
   let count = initialCount;
-  const counterRef = ref<HTMLParagraphElement>();
+  const counterRef = ref<HTMLElement>();
 
   const increment = () => {
     count++;
+    const display = counterRef.get();
 
-    if (counterRef.value)
-      counterRef.value.innerText = count.toString();
+    if (display)
+      display.innerText = count.toString();
   };
 
   return (
     <div className={cls({ Counter: true, blue: !!blue })}>
-      <p data-id="display" $ref={counterRef}>{count}</p>
+      <article data-id="display" $ref={counterRef}>{count}</article>
       <button on:click={increment}>+</button>
     </div>
   );

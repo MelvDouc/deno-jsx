@@ -13,9 +13,7 @@ declare global {
     }
 
     // Necessary for custom JSX to be recognized by TypeScript.
-    type IntrinsicElements = {
-      [K in keyof JSX_ElementTagNameMap]: Partial<JSX_ElementTagNameMap[K]>
-    };
+    interface IntrinsicElements extends JSX_ElementTagNameMap { }
   }
 
   const Dsx: typeof import("@melvdouc/dsx").Dsx;

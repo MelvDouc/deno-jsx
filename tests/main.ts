@@ -1,4 +1,9 @@
+/// <reference types="../globals.d.ts" />
+
 import { Window } from "happy-dom";
+import { initDsx } from "@melvdouc/dsx";
+
+initDsx();
 
 const window = new Window();
 const { document } = window;

@@ -1,6 +1,6 @@
 {
   "name": "@melvdouc/dsx",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "imports": {
     "$/": "./src/",
@@ -9,9 +9,7 @@
     "esbuild": "npm:esbuild@^0.24.2",
     "happy-dom": "npm:happy-dom@^16.5.2"
   },
-  "exports": {
-    ".": "./mod.ts"
-  },
+  "exports": "./mod.ts",
   "publish": {
     "include": [
       "./deno.json",

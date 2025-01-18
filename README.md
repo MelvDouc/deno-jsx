@@ -2,9 +2,7 @@
 
 Generate elements dynamically using JSX.
 
-## Usage
-
-### Config
+## Config
 
 tsconfig.json:
 
@@ -18,7 +16,7 @@ tsconfig.json:
 }
 ```
 
-As JSR doesn't allow global type augmentations, you need to create a `jsx.d.ts` (or use an existing `.d.ts` file) and insert the following:
+As JSR doesn't allow global type augmentations, you need to create a `jsx.d.ts` file (or use an existing `.d.ts` file) and insert the following:
 
 ```typescript
 import type { JSX_ElementTagNameMap } from "@melvdouc/dsx";
@@ -31,9 +29,7 @@ declare global {
       children: unknown;
     }
 
-    type IntrinsicElements = {
-      [K in keyof JSX_ElementTagNameMap]: Partial<JSX_ElementTagNameMap[K]>
-    };
+    interface IntrinsicElements extends JSX_ElementTagNameMap { }
   }
 
   const Dsx: typeof import("@melvdouc/dsx").Dsx;
@@ -47,6 +43,8 @@ import { initDsx } "@melvdouc/dsx";
 
 initDsx();
 ```
+
+## Usage
 
 ### Creating a component
 
@@ -62,9 +60,10 @@ export default function Counter({ initialCount = 0, blue }: {
 
   const increment = (): void => {
     count++;
+    const display = counterRef.get();
 
-    if (counterRef.value)
-      counterRef.value.innerText = count.toString();
+    if (display)
+      display.innerText = count.toString();
   };
 
   return (
