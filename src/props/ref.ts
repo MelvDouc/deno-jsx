@@ -27,6 +27,15 @@ class Ref<T> {
   public set value(value: T | null) {
     this._value = value;
   }
+
+  /**
+   * Run a function if this instance has a reference to a non null value.
+   * @param fn The function to run.
+   */
+  public ifValue(fn: (value: T) => unknown): void {
+    if (this._value !== null)
+      fn(this._value);
+  }
 }
 
 export {
