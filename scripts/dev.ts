@@ -24,7 +24,7 @@ const ctx = await esbuild.context({
 
 await ctx.watch();
 
-await ctx.serve({
+const { host, port } = await ctx.serve({
   servedir: SERVE_DIR,
   onRequest: ({ method, path, status }) => {
     console.log(
@@ -35,3 +35,5 @@ await ctx.serve({
     );
   }
 });
+
+console.log(`App running at http://${host}:${port}`);

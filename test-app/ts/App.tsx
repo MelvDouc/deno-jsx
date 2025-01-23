@@ -1,24 +1,31 @@
-import Counter from "./components/Counter.tsx";
-import Dropdown from "./components/Dropdown.tsx";
-import Nav from "./components/Nav.tsx";
+import ToDoForm from "./components/ToDoForm.tsx";
+import ToDoList from "./components/ToDoList.tsx";
+import type { ToDo } from "./types.ts";
 
 function App() {
+  const savedData = localStorage.getItem("to-dos");
+  const toDos: ToDo[] = savedData ? JSON.parse(savedData) : [];
+
+  const save = () => {
+    localStorage.setItem("to-dos", JSON.stringify(toDos));
+  };
+
+  const addToDo = (toDo: ToDo) => {
+    toDos.push(toDo);
+    save();
+    document.body.dispatchEvent(new CustomEvent("to-do-added", { detail: toDo }));
+  };
+
+  const onToDoAdded = (listener: (toDo: ToDo) => void) => {
+    document.body.addEventListener("to-do-added", (e) => {
+      listener((e as CustomEvent<ToDo>).detail);
+    });
+  };
+
   return (
     <>
-      <Nav />
-      <Counter blue />
-      <Dropdown open={false}>
-        <iframe
-          width="1263"
-          height="480"
-          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-          title="Rick Astley - Never Gonna Give You Up (Official Music Video)"
-          referrerPolicy="strict-origin-when-cross-origin"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          allowFullscreen
-          style={{ border: "0" }}
-        ></iframe>
-      </Dropdown>
+      <ToDoForm addToDo={addToDo} />
+      <ToDoList toDos={toDos} save={save} onToDoAdded={onToDoAdded} />
     </>
   );
 }

@@ -1,3 +1,9 @@
-.blue {
-  color: blue;
+.to-do {
+  &.complete {
+    text-decoration: line-through;
+  }
+
+  & span {
+    user-select: none;
+  }
 }

@@ -19,20 +19,20 @@ tsconfig.json:
 As JSR doesn't allow global type augmentations, you need to create a `jsx.d.ts` file (or use an existing `.d.ts` file) and insert the following:
 
 ```typescript
-import type { JSX_PropsTagNameMap } from "@melvdouc/dsx";
+import type { ComponentChildren, DsxType, JSX_PropsTagNameMap } from "@melvdouc/dsx";
 
 declare global {
   namespace JSX {
-    interface Element extends globalThis.Node { }
+    type Element = globalThis.Element;
 
     interface ElementChildrenAttribute {
-      children: unknown;
+      children: ComponentChildren;
     }
 
     interface IntrinsicElements extends JSX_PropsTagNameMap { }
   }
 
-  const Dsx: typeof import("@melvdouc/dsx").Dsx;
+  const Dsx: DsxType;
 }
 ```
 

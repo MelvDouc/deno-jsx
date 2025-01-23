@@ -1,5 +1,11 @@
-export type { Component, ComponentChild, ComponentChildren } from "$/component/component.ts";
-export { Dsx, initDsx } from "$/create-element/dsx.ts";
-export { default as className } from "$/props/helpers/class-name.ts";
-export type { JSX_Props, JSX_PropsTagNameMap } from "$/props/props.ts";
-export { default as ref, type ElementRef } from "$/props/ref.ts";
+export { type DsxType, initDsx } from "$/Dsx/Dsx.ts";
+export { default as className } from "$/extra/class-name.ts";
+export { default as ref, type ElementRef } from "$/ref/ref.ts";
+export type {
+  Component,
+  ComponentChild,
+  ComponentChildren,
+  JSX_Props,
+  JSX_PropsTagNameMap,
+  JSX_StyleDeclaration
+} from "$/typings/mod.ts";
