@@ -10,3 +10,8 @@ export type ComponentChild = BaseComponentChild | ComponentChildren;
  * A recursive array of {@link ComponentChild}.
  */
 export type ComponentChildren = ComponentChild[];
+
+/**
+ * An element factory function.
+ */
+export type Component = (props?: object | null) => ComponentChild;

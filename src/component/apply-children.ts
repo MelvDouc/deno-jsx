@@ -1,4 +1,4 @@
-import type { ComponentChild, ComponentChildren } from "$/typings/mod.ts";
+import type { ComponentChildren, ComponentChild } from "$/component/component.ts";
 
 export default function applyChildren(node: Node, children: ComponentChildren): void {
   children.forEach((child) => applyChild(node, child));

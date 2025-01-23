@@ -1,5 +1,5 @@
-import { applyChildren } from "$/props/mod.ts";
-import type { ComponentChildren } from "$/typings/mod.ts";
+import applyChildren from "$/component/apply-children.ts";
+import type { ComponentChildren } from "$/component/component.ts";
 
 /**
  * Create a document fragment with children.

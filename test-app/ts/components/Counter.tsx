@@ -9,10 +9,9 @@ export default function Counter({ initialCount = 0, blue }: {
 
   const increment = () => {
     count++;
-    const display = counterRef.value;
-
-    if (display)
-      display.innerText = count.toString();
+    counterRef.ifValue((element) => {
+      element.innerText = count.toString();
+    });
   };
 
   return (

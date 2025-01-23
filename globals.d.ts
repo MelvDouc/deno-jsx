@@ -1,4 +1,4 @@
-import type { JSX_ElementTagNameMap } from "@melvdouc/dsx";
+import type { JSX_PropsTagNameMap } from "@melvdouc/dsx";
 
 // Extend the global JSX namespace to include custom intrinsic elements.
 declare global {
@@ -13,7 +13,7 @@ declare global {
     }
 
     // Necessary for custom JSX to be recognized by TypeScript.
-    interface IntrinsicElements extends JSX_ElementTagNameMap { }
+    interface IntrinsicElements extends JSX_PropsTagNameMap { }
   }
 
   const Dsx: typeof import("@melvdouc/dsx").Dsx;

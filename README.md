@@ -19,7 +19,7 @@ tsconfig.json:
 As JSR doesn't allow global type augmentations, you need to create a `jsx.d.ts` file (or use an existing `.d.ts` file) and insert the following:
 
 ```typescript
-import type { JSX_ElementTagNameMap } from "@melvdouc/dsx";
+import type { JSX_PropsTagNameMap } from "@melvdouc/dsx";
 
 declare global {
   namespace JSX {
@@ -29,7 +29,7 @@ declare global {
       children: unknown;
     }
 
-    interface IntrinsicElements extends JSX_ElementTagNameMap { }
+    interface IntrinsicElements extends JSX_PropsTagNameMap { }
   }
 
   const Dsx: typeof import("@melvdouc/dsx").Dsx;
@@ -60,10 +60,9 @@ export default function Counter({ initialCount = 0, blue }: {
 
   const increment = (): void => {
     count++;
-    const display = counterRef.value;
-
-    if (display)
-      display.innerText = count.toString();
+    counterRef.ifValue((element) => {
+      element.innerText = count.toString();
+    });
   };
 
   return (

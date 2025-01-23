@@ -3,25 +3,21 @@ import Dropdown from "./components/Dropdown.tsx";
 import Nav from "./components/Nav.tsx";
 
 function App() {
-  const iframeAllow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-  const iframeTitle = "Votre ESPRIT : l'ARME d'une GUERRE FROIDE 2.0 ? (décryptage)";
-
   return (
     <>
       <Nav />
       <Counter blue />
-      <Dropdown open>
+      <Dropdown open={false}>
         <iframe
-          src="https://www.youtube.com/embed/gz0ar37JVPY"
-          title={iframeTitle}
+          width="1263"
+          height="480"
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+          title="Rick Astley - Never Gonna Give You Up (Official Music Video)"
           referrerPolicy="strict-origin-when-cross-origin"
-          allow={iframeAllow}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           allowFullscreen
-          style={{
-            width: "min(100%, 500px)",
-            aspectRatio: "16 / 9"
-          }}
-        />
+          style={{ border: "0" }}
+        ></iframe>
       </Dropdown>
     </>
   );

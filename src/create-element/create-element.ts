@@ -1,11 +1,9 @@
-import createSVG, { isSVGTagName } from "$/dsx/create-svg/create-svg.ts";
-import { applyChildren, applyProps, applyStyle } from "$/props/mod.ts";
-import type {
-  Component,
-  ComponentChild,
-  ComponentChildren,
-  JSX_Element
-} from "$/typings/mod.ts";
+import applyChildren from "$/component/apply-children.ts";
+import type { Component, ComponentChild, ComponentChildren } from "$/component/component.ts";
+import createSVG, { isSVGTagName } from "$/create-element/create-svg/create-svg.ts";
+import applyProps from "$/props/apply-props.ts";
+import type { JSX_Props } from "$/props/props.ts";
+import applyStyle from "$/props/style/apply-style.ts";
 
 /**
  * Create an element using a tag name or a component function.
@@ -28,7 +26,7 @@ export default function createElement(
   if (typeof tag === "function")
     return tag({ ...props, children });
 
-  const { is, style, $init, $ref, ...otherProps } = props as JSX_Element & { is?: string; };
+  const { is, style, $init, $ref, ...otherProps } = props as JSX_Props & { is?: string; };
   const element = createHTMLOrSVGElement(tag, is);
 
   applyProps(element, otherProps);

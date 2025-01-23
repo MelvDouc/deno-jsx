@@ -1,5 +1,5 @@
-import createElement from "$/dsx/create-element.ts";
-import Fragment from "$/dsx/Fragment.ts";
+import createElement from "$/create-element/create-element.ts";
+import Fragment from "$/create-element/Fragment.ts";
 
 /**
  * A global object similar to the React object.
