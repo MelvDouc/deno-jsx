@@ -1,4 +1,4 @@
-import type { ComponentChildren, DsxType, JSX_PropsTagNameMap } from "@melvdouc/dsx";
+import type { ComponentParent, DsxType, JSX_PropsTagNameMap } from "@melvdouc/dsx";
 
 // Extend the global JSX namespace to include custom intrinsic elements.
 declare global {
@@ -7,9 +7,7 @@ declare global {
     type Element = globalThis.Element;
 
     // Allows for child nodes to be inferred as the value of the `children` prop.
-    interface ElementChildrenAttribute {
-      children: ComponentChildren;
-    }
+    interface ElementChildrenAttribute extends ComponentParent { }
 
     // Necessary for custom JSX to be recognized by TypeScript.
     interface IntrinsicElements extends JSX_PropsTagNameMap { }

@@ -25,14 +25,14 @@ export default function createElement(
   if (typeof tag === "function")
     return tag({ ...props, children });
 
-  const { is, style, $init, $ref, ...otherProps } = props as JSX_Props & { is?: string; };
+  const { is, style, $init, $ref, ...otherProps } = props as JSX_Props;
   const element = createHTMLOrSVGElement(tag, is);
 
   applyProps(element, otherProps);
   style && applyStyle(element, style);
   applyChildren(element, children);
   $ref && ($ref.value = element);
-  $init && $init(element);
+  $init && ($init as (element: Element) => void)(element);
 
   return element;
 }

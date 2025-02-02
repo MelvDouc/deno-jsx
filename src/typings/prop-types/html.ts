@@ -6,39 +6,70 @@ import type { JSX_EventHandler } from "$/typings/prop-types/event-handlers.ts";
 // ===== ===== ===== ===== =====
 
 interface JSX_HTMLProps<T extends HTMLElement = HTMLElement> extends JSX_CommonProps<T> {
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/accessKey */
   accessKey?: string;
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/autocapitalize */
   autocapitalize?: "" | "off" | "none" | "on" | "sentences" | "words" | "characters";
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/contentEditable */
   contentEditable?: string;
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/dir */
   dir?: "" | "auto" | "ltr" | "rtl";
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/enterKeyHint */
   enterKeyHint?: "" | "enter" | "done" | "go" | "next" | "previous" | "search" | "send";
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/hidden */
   hidden?: boolean | "until-found";
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inert */
   inert?: boolean;
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/inputMode */
   inputMode?: string;
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/is */
   is?: string;
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/lang */
   lang?: string;
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/popover */
   popover?: "auto" | "manual" | null;
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/spellcheck */
   spellcheck?: boolean;
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/title */
   title?: string;
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/translate */
   translate?: boolean;
 }
 
 interface JSX_HTMLMediaProps<T extends HTMLMediaElement> extends JSX_HTMLProps<T> {
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/autoplay */
   autoplay?: boolean;
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/controls */
   controls?: boolean;
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/crossOrigin */
   crossOrigin?: string | null;
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/currentTime */
   currentTime?: number;
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/defaultMuted */
   defaultMuted?: boolean;
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/defaultPlaybackRate */
   defaultPlaybackRate?: number;
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/disableRemotePlayback */
   disableRemotePlayback?: boolean;
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/loop */
   loop?: boolean;
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/muted */
   muted?: boolean;
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/onencrypted */
   "on:encrypted"?: JSX_EventHandler<MediaEncryptedEvent>;
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/onwaitingforkey */
   "on:waitingforkey"?: JSX_EventHandler<Event>;
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/playbackRate */
   playbackRate?: number;
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/preload */
   preload?: "none" | "metadata" | "auto" | "";
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/preservesPitch */
   preservesPitch?: boolean;
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/src */
   src?: string;
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/srcObject */
   srcObject?: MediaProvider | null;
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLMediaElement/volume */
   volume?: number;
 }
 
@@ -69,6 +100,11 @@ interface JSX_PopoverInvokerProps<T extends HTMLElement> extends JSX_HTMLProps<T
   popoverTargetAction?: string;
   popoverTarget?: string | null;
   value?: string;
+}
+
+interface Sized {
+  height?: number;
+  width?: number;
 }
 
 // ===== ===== ===== ===== =====
@@ -126,10 +162,7 @@ interface JSX_HTMLButtonProps extends JSX_PopoverInvokerProps<HTMLButtonElement>
 // canvas
 // ===== ===== ===== ===== =====
 
-interface JSX_HTMLCanvasProps extends JSX_HTMLProps<HTMLCanvasElement> {
-  height?: number;
-  width?: number;
-}
+interface JSX_HTMLCanvasProps extends JSX_HTMLProps<HTMLCanvasElement>, Sized { }
 
 // ===== ===== ===== ===== =====
 // col & colgroup
@@ -177,11 +210,9 @@ interface JSX_HTMLDialogProps extends JSX_HTMLProps<HTMLDialogElement> {
 // embed
 // ===== ===== ===== ===== =====
 
-interface JSX_HTMLEmbedProps extends JSX_HTMLProps<HTMLEmbedElement> {
-  height?: number;
+interface JSX_HTMLEmbedProps extends JSX_HTMLProps<HTMLEmbedElement>, Sized {
   src?: string;
   type?: string;
-  width?: number;
 }
 
 // ===== ===== ===== ===== =====
@@ -214,33 +245,28 @@ interface JSX_HTMLFormProps extends JSX_HTMLProps<HTMLFormElement> {
 // iframe
 // ===== ===== ===== ===== =====
 
-interface JSX_HTMLIFrameProps extends JSX_HTMLProps<HTMLIFrameElement> {
+interface JSX_HTMLIFrameProps extends JSX_HTMLProps<HTMLIFrameElement>, Sized {
   allow?: string;
   allowFullscreen?: boolean;
-  /**
-   * @deprecated Use the CSS `border` property instead.
-   */
+  /** @deprecated Use the CSS `border` property instead. */
   frameBorder?: string;
-  height?: string;
   loading?: string;
   name?: string;
   referrerPolicy?: ReferrerPolicy;
   sandbox?: string;
   src?: string;
   srcdoc?: string;
-  width?: string;
 }
 
 // ===== ===== ===== ===== =====
 // img
 // ===== ===== ===== ===== =====
 
-interface JSX_HTMLImgProps extends JSX_HTMLProps<HTMLImageElement> {
+interface JSX_HTMLImgProps extends JSX_HTMLProps<HTMLImageElement>, Sized {
   alt?: string;
   crossOrigin?: string | null;
   decoding?: "async" | "sync" | "auto";
   fetchPriority?: "auto" | "high" | "low";
-  height?: number;
   isMap?: boolean;
   loading?: "eager" | "lazy";
   referrerPolicy?: ReferrerPolicy;
@@ -248,14 +274,13 @@ interface JSX_HTMLImgProps extends JSX_HTMLProps<HTMLImageElement> {
   src?: string;
   srcset?: string;
   useMap?: string;
-  width?: number;
 }
 
 // ===== ===== ===== ===== =====
 // input
 // ===== ===== ===== ===== =====
 
-interface JSX_HTMLInputProps extends JSX_PopoverInvokerProps<HTMLInputElement> {
+interface JSX_HTMLInputProps extends JSX_PopoverInvokerProps<HTMLInputElement>, Sized {
   accept?: string;
   align?: string;
   alt?: string;
@@ -266,7 +291,6 @@ interface JSX_HTMLInputProps extends JSX_PopoverInvokerProps<HTMLInputElement> {
   defaultValue?: string;
   dirName?: string;
   formTarget?: string;
-  height?: number;
   indeterminate?: boolean;
   list?: string;
   max?: number | string;
@@ -284,7 +308,6 @@ interface JSX_HTMLInputProps extends JSX_PopoverInvokerProps<HTMLInputElement> {
   src?: string;
   step?: number | "any";
   type?: string;
-  width?: number;
 }
 
 // ===== ===== ===== ===== =====
@@ -358,12 +381,10 @@ interface JSX_HTMLMeterProps extends JSX_HTMLProps<HTMLMeterElement> {
 // object
 // ===== ===== ===== ===== =====
 
-interface JSX_HTMLObjectProps extends JSX_HTMLProps<HTMLObjectElement> {
+interface JSX_HTMLObjectProps extends JSX_HTMLProps<HTMLObjectElement>, Sized {
   data?: string;
-  height?: string;
   name?: string;
   type?: string;
-  width?: string;
 }
 
 // ===== ===== ===== ===== =====
@@ -460,14 +481,12 @@ interface JSX_HTMLSlotProps extends JSX_HTMLProps<HTMLSlotElement> {
 // source
 // ===== ===== ===== ===== =====
 
-interface JSX_HTMLSourceProps extends JSX_HTMLProps<HTMLSourceElement> {
-  height?: number;
+interface JSX_HTMLSourceProps extends JSX_HTMLProps<HTMLSourceElement>, Sized {
   media?: string;
   sizes?: string;
   src?: string;
   srcset?: string;
   type?: string;
-  width?: number;
 }
 
 // ===== ===== ===== ===== =====
@@ -477,7 +496,6 @@ interface JSX_HTMLSourceProps extends JSX_HTMLProps<HTMLSourceElement> {
 interface JSX_HTMLStyleProps extends JSX_HTMLProps<HTMLStyleElement> {
   disabled?: boolean;
   media?: string;
-  title?: string;
 }
 
 // ===== ===== ===== ===== =====
@@ -520,8 +538,8 @@ interface JSX_HTMLTextAreaProps extends JSX_HTMLProps<HTMLTextAreaElement> {
   selectionDirection?: "forward" | "backward" | "none";
   selectionEnd?: number;
   selectionStart?: number;
-  wrap?: string;
   value?: string;
+  wrap?: string;
 }
 
 // ===== ===== ===== ===== =====
@@ -529,6 +547,7 @@ interface JSX_HTMLTextAreaProps extends JSX_HTMLProps<HTMLTextAreaElement> {
 // ===== ===== ===== ===== =====
 
 interface JSX_HTMLTimeProps extends JSX_HTMLProps<HTMLTimeElement> {
+  /** https://developer.mozilla.org/en-US/docs/Web/API/HTMLTimeElement/dateTime */
   dateTime?: string;
 }
 
@@ -548,14 +567,12 @@ interface JSX_HTMLTrackProps extends JSX_HTMLProps<HTMLTrackElement> {
 // video
 // ===== ===== ===== ===== =====
 
-interface JSX_HTMLVideoProps extends JSX_HTMLMediaProps<HTMLVideoElement> {
+interface JSX_HTMLVideoProps extends JSX_HTMLMediaProps<HTMLVideoElement>, Sized {
   disablePictureInPicture?: boolean;
-  height?: number;
   "on:enterpictureinpicture"?: JSX_EventHandler<Event>;
   "on:leavepictureinpicture"?: JSX_EventHandler<Event>;
   playsInline?: boolean;
   poster?: string;
-  width?: number;
 }
 
 // ===== ===== ===== ===== =====

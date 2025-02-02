@@ -5,6 +5,7 @@ export type {
   Component,
   ComponentChild,
   ComponentChildren,
+  ComponentParent,
   JSX_Props,
   JSX_PropsTagNameMap,
   JSX_StyleDeclaration

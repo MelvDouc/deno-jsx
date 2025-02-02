@@ -15,3 +15,10 @@ export type ComponentChildren = ComponentChild[];
  * An element factory function.
  */
 export type Component = (props: object | null) => ComponentChild;
+
+/**
+ * A component in which children can be nested.
+ */
+export interface ComponentParent {
+  children?: ComponentChild;
+}

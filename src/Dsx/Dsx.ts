@@ -13,13 +13,16 @@ const Dsx = {
 /**
  * Define `Dsx` as a global constant.
  * This is needed by TS transpilers to transpile JSX/TSX code.
- * @returns The `Dsx` object.
+ * @returns The global {@link Dsx} object.
  */
 function initDsx(): typeof Dsx {
   Object.defineProperty(globalThis, "Dsx", { value: Dsx });
   return Dsx;
 }
 
+/**
+ * The global {@link Dsx} object as a type.
+ */
 type DsxType = typeof Dsx;
 
 export {
